@@ -1,34 +1,40 @@
-#include <stdio.h>
+#include<stdio.h>
 #include <stdlib.h>
 #include "sort.h"
+
 /**
- * selection_sort - func
- * @array: var
- * @size: var
+ * selection_sort - sorting array elements by ascending order
+ *
+ * @array: list of numbers
+ * @size: number of elements in array
+ *
+ *
+ *
  */
+
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, min;
-	int tmp;
+size_t n = 0, z, y;
+int temp;
 
-	for (i = 0; i < size - 1; i++)
+while (n < size)
+{
+	z = n;
+	y = n + 1;
+	while (y < size)
 	{
-	min = i;
-
-	for (j = i + 1; j < size; j++)
+		if (array[y] < array[z])
+			z = y;
+		y++;
+	}
+	if (z != n)
 	{
-	if (array[j] < array[min])
-	{
-	min = j;
+		temp = array[z];
+		array[z] = array[n];
+		array[n] = temp;
+		print_array(array, size);
 	}
-	if (min != i)
-	{
-	tmp = array[i];
-	array[i] = array[min];
-	array[min] = tmp;
-	print_array(array, size);
-	}
-	}
-	}
-	}
+	n++;
+}
+}
